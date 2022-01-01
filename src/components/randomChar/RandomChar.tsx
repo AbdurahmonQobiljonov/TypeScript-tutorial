@@ -2,74 +2,74 @@ import React from 'react';
 
 import mjolnir from '../../resources/img/mjolnir.png';
 import MarvelService from "../../services/MarvelService";
-import {IProps} from "../../interfaces/interfaces";
+import {IData, IProps,} from "../../interfaces/interfaces";
+import View from "./View";
+import Spinner from "../spinner/spinner";
 
 import './randomChar.scss';
+import ErrorMassage from "../errorMassage/ErrorMassage";
 
 
 class RandomChar extends React.Component {
 
-    state:{char:IProps} = {
+    state: IProps = {
         char: {
             name: '',
             description: '',
             thumbnail: '',
             homepage: '',
             wiki: ''
-        }
+        },
+        loading: true,
+        error: false,
     }
 
-    componentDidMount():void {
-      this.updateChar()
+    componentDidMount(): void {
+        this.updateChar()
     }
 
     marvelService = new MarvelService();
 
-    onCharLoaded = (char:IProps) =>{
-        this.setState({char})
+    onCharLoaded = (char: IData) => {
+        this.setState({char, loading: false})
+    }
+
+    onError = () => {
+        this.setState({loading: false, error: true})
+
     }
 
     updateChar = () => {
-      const id:number = Math.floor(Math.random() * (1011400-1011000) + 1011000)
-      this.marvelService
-          .getCharacter(id)
-          .then(this.onCharLoaded);
+        const id: number = Math.floor(Math.random() * (1011400 - 1011000) + 1011000)
+        this.marvelService
+            .getCharacter(id)
+            .then(this.onCharLoaded)
+            .catch(this.onError)
     }
 
     render(): JSX.Element {
 
-        const {name, description, thumbnail, homepage, wiki} = this.state.char;
+        const {char, loading, error} = this.state;
+        const errorMessage = error ? <ErrorMassage/> : null;
+        const spinner = loading ? <Spinner/> : null;
+        const content = !(loading || error) ? <View char={char}/> : null;
 
         return (
-            <div className="randomchar">
-                <div className="randomchar__block">
-                    <img src={thumbnail} alt="Random character" className="randomchar__img"/>
-                    <div className="randomchar__info">
-                        <p className="randomchar__name">{name}</p>
-                        <p className="randomchar__descr">
-                            {description}
-                        </p>
-                        <div className="randomchar__btns">
-                            <a href={homepage} className="button button__main">
-                                <div className="inner">homepage</div>
-                            </a>
-                            <a href={wiki} className="button button__secondary">
-                                <div className="inner">Wiki</div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div className="randomchar__static">
-                    <p className="randomchar__title">
+            <div className="random_char">
+                {errorMessage}
+                {spinner}
+                {content}
+                <div className="random_char__static">
+                    <p className="random_char__title">
                         Random character for today!
                         <br/>
                         Do you want to get to know him better?
                     </p>
-                    <p className="randomchar__title">Or choose another one</p>
+                    <p className="random_char__title">Or choose another one</p>
                     <button className="button button__main">
                         <div className="inner">try it</div>
                     </button>
-                    <img src={mjolnir} alt="mjolnir" className="randomchar__decoration"/>
+                    <img src={mjolnir} alt="mjolnir" className="random_char__decoration"/>
                 </div>
             </div>
         );

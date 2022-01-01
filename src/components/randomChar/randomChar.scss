@@ -1,6 +1,7 @@
 @import '../../style/variables.scss';
 
-.randomchar {
+.random_char {
+    align-items: center;
     display: grid;
     grid-template-columns: repeat(2, 50%);
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
