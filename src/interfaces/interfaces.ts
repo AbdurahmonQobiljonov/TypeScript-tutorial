@@ -7,4 +7,4 @@ export interface IData {
     wiki: string;
 }
 
-export interface IProps { char: IData, loading?: boolean,error?:boolean }
+export interface IProps { char: IData, loading?: boolean,error?:boolean,timerId?:number }

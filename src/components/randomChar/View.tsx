@@ -3,9 +3,17 @@ import { IProps} from "../../interfaces/interfaces";
 
 const View = ({char}:IProps) =>{
     const {name,description,thumbnail,homepage,wiki}=char;
+    const _url:string  = 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg'
+
+
     return (
         <div className="random_char__block">
-            <img src={thumbnail} alt="Random character" className="random_char__img"/>
+            <img
+                src={thumbnail}
+                alt="Random character"
+                className="random_char__img"
+                style={thumbnail===_url?{objectFit : 'contain'}:{objectFit : 'cover'}}
+            />
             <div className="random_char__info">
                 <p className="random_char__name">{name}</p>
                 <p className="random_char__descr">

@@ -9,7 +9,6 @@ import Spinner from "../spinner/spinner";
 import './randomChar.scss';
 import ErrorMassage from "../errorMassage/ErrorMassage";
 
-
 class RandomChar extends React.Component {
 
     state: IProps = {
@@ -23,9 +22,15 @@ class RandomChar extends React.Component {
         loading: true,
         error: false,
     }
+    timerId: number = 0
 
     componentDidMount(): void {
-        this.updateChar()
+        this.updateChar();
+        this.timerId = window.setInterval(this.updateChar, 3000)
+    }
+
+    componentWillUnmount(): void {
+        clearInterval(this.timerId)
     }
 
     marvelService = new MarvelService();
@@ -48,7 +53,6 @@ class RandomChar extends React.Component {
     }
 
     render(): JSX.Element {
-
         const {char, loading, error} = this.state;
         const errorMessage = error ? <ErrorMassage/> : null;
         const spinner = loading ? <Spinner/> : null;
@@ -66,7 +70,10 @@ class RandomChar extends React.Component {
                         Do you want to get to know him better?
                     </p>
                     <p className="random_char__title">Or choose another one</p>
-                    <button className="button button__main">
+                    <button
+                        className="button button__main"
+                        onClick={this.updateChar}
+                    >
                         <div className="inner">try it</div>
                     </button>
                     <img src={mjolnir} alt="mjolnir" className="random_char__decoration"/>
