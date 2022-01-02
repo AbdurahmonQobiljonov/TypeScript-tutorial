@@ -1,7 +1,7 @@
-import { IProps} from "../../interfaces/interfaces";
+import {IData} from "../../interfaces/interfaces";
 
 
-const View = ({char}:IProps) =>{
+const View = ({char}:{char:IData}) =>{
     const {name,description,thumbnail,homepage,wiki}=char;
     const _url:string  = 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg'
 

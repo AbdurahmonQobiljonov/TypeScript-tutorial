@@ -2,13 +2,12 @@ import React, {Component} from 'react';
 import Spinner from "../spinner/spinner";
 import ErrorMassage from "../errorMassage/ErrorMassage";
 import MarvelService from '../../services/MarvelService';
-import './charList.scss';
 import {IData} from "../../interfaces/interfaces";
+import {onCharSelect} from "./CharListProps";
+import './charList.scss';
 
 
-type  onCharSelect = {
-    onCharSelected:(id:number)=>void
-}
+
 class CharList extends Component<onCharSelect> {
 
     state:{charList:IData[],loading:boolean,error:boolean} = {
@@ -32,6 +31,7 @@ class CharList extends Component<onCharSelect> {
         })
     }
 
+
     onError = () => {
         this.setState({
             error: true,
@@ -41,13 +41,13 @@ class CharList extends Component<onCharSelect> {
 
 
     renderItems(arr:IData[]) {
-        const items =  arr.map((item) => {const _url:string  = 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg'
+        const items =  arr?.map((item) => {const _url:string  = 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg'
             console.log(item.id)
             return (
                 <li
                     key={`${item.id}_${item.name}`}
                     className="char__item"
-                    // onClick={()=>this.props.onCharSelected(item.id)}
+                    onClick={()=>this.props.onCharSelected(item.id)}
                 >
                     <img src={item.thumbnail} alt={item.name} style={item.thumbnail===_url?{objectFit : 'contain'}:{objectFit : 'cover'}}/>
                     <div className="char__name">{item.name}</div>

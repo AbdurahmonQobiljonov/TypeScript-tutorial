@@ -12,7 +12,7 @@ class App extends Component {
         selectedChar:0
     }
 
-    onSelectedChar = (id:number) => {
+    onSelectedChar = (id:number|undefined) => {
         // @ts-ignore
         this.setState({selectedChar:id})
     }
@@ -26,7 +26,7 @@ class App extends Component {
                     <RandomChar/>
                     <div className="char__content">
                         <CharList onCharSelected={this.onSelectedChar}/>
-                        <CharInfo />
+                        <CharInfo  charId={this.state.selectedChar}/>
                     </div>
                     <img className="bg-decoration" src={decoration} alt="vision"/>
                 </main>

@@ -5,9 +5,9 @@ import MarvelService from "../../services/MarvelService";
 import {IData, IProps,} from "../../interfaces/interfaces";
 import View from "./View";
 import Spinner from "../spinner/spinner";
+import ErrorMassage from "../errorMassage/ErrorMassage";
 
 import './randomChar.scss';
-import ErrorMassage from "../errorMassage/ErrorMassage";
 
 class RandomChar extends React.Component {
 
@@ -26,7 +26,7 @@ class RandomChar extends React.Component {
 
     componentDidMount(): void {
         this.updateChar();
-        this.timerId = window.setInterval(this.updateChar, 3000)
+        // this.timerId = window.setInterval(this.updateChar, 3000)
     }
 
     componentWillUnmount(): void {
