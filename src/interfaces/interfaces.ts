@@ -13,4 +13,8 @@ interface IComics {
     name: string;
 }
 
+export interface IError{
+    error:boolean
+}
+
 export interface IProps { char: IData , loading?: boolean,error?:boolean,timerId?:number }

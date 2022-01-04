@@ -5,15 +5,16 @@ import CharList from "../charList/CharList";
 import CharInfo from "../charInfo/CharInfo";
 
 import decoration from '../../resources/img/vision.png';
+import ErrorBoundary from "../errorBoundary/ErrorBoundary";
 
 class App extends Component {
 
-    state:{selectedChar:number}={
-        selectedChar:0
+    state: { selectedChar: number } = {
+        selectedChar: 0
     }
 
-    onSelectedChar = (id:number|undefined) => {
-        this.setState({selectedChar:id})
+    onSelectedChar = (id: number | undefined) => {
+        this.setState({selectedChar: id})
     }
 
     render(): JSX.Element {
@@ -22,10 +23,16 @@ class App extends Component {
             <div className="app">
                 <AppHeader/>
                 <main>
-                    <RandomChar/>
+                    <ErrorBoundary>
+                        <RandomChar/>
+                    </ErrorBoundary>
                     <div className="char__content">
-                        <CharList onCharSelected={this.onSelectedChar}/>
-                        <CharInfo  charId={this.state.selectedChar}/>
+                        <ErrorBoundary>
+                            <CharList onCharSelected={this.onSelectedChar}/>
+                        </ErrorBoundary>
+                        <ErrorBoundary>
+                            <CharInfo charId={this.state.selectedChar}/>
+                        </ErrorBoundary>
                     </div>
                     <img className="bg-decoration" src={decoration} alt="vision"/>
                 </main>

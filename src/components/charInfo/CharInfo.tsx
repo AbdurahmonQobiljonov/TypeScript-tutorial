@@ -8,6 +8,7 @@ import Spinner from "../spinner/spinner";
 import Skeleton from '../skeleton/Skeleton'
 
 import './charInfo.scss';
+import {ErrorInfo, ReactElement} from "react";
 
 class CharInfo extends Component<charId> {
 
