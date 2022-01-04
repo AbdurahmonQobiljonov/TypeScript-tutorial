@@ -18,3 +18,5 @@ export interface IError{
 }
 
 export interface IProps { char: IData , loading?: boolean,error?:boolean,timerId?:number }
+
+export interface IState {charList:IData[],loading?:boolean,error?:boolean,newItemLoading?:boolean,offset:number,charEnded?:boolean}
