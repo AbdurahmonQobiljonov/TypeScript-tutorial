@@ -2,7 +2,7 @@ import {Component} from "react/index";
 import {IData, IProps} from "../../interfaces/interfaces";
 import MarvelService from "../../services/MarvelService";
 import {charId} from "./CharinfoProps";
-import View from "../charList/View";
+import View from "./View";
 import ErrorMassage from "../errorMassage/ErrorMassage";
 import Spinner from "../spinner/spinner";
 import Skeleton from '../skeleton/Skeleton'

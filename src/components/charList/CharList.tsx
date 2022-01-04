@@ -42,7 +42,6 @@ class CharList extends Component<onCharSelect> {
 
     renderItems(arr:IData[]) {
         const items =  arr?.map((item) => {const _url:string  = 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg'
-            console.log(item.id)
             return (
                 <li
                     key={`${item.id}_${item.name}`}

@@ -13,7 +13,6 @@ class App extends Component {
     }
 
     onSelectedChar = (id:number|undefined) => {
-        // @ts-ignore
         this.setState({selectedChar:id})
     }
 
