@@ -1,3 +1,3 @@
 export interface  onCharSelect  {
-    onCharSelected:(id:number|undefined )=>void
+    onCharSelected:(id:number )=>void
 }
