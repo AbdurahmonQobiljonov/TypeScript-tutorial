@@ -1,32 +1,24 @@
 import {IData} from "../interfaces/interfaces";
+import {useHttp} from '../hooks/http.hook'
 
-export default class MarvelService {
+ const useMarvelService = () => {
+    const {error,loading,request,clearError}=useHttp();
 
-    _apiBase: string = 'https://gateway.marvel.com:443/v1/public/';
-    _apiKey: string = 'apikey=de519c606c9101226c4ce157bff823a4'
-    _baseOffset: number = 210;
-    getResource = async (url: string): Promise<any> => {
-        let res = await fetch(url);
-        if (!res.ok) {
-            throw new Error(`Could not fetch ${url} , status: ${res.status}`);
-        }
+    const _apiBase: string = 'https://gateway.marvel.com:443/v1/public/';
+    const _apiKey: string = 'apikey=de519c606c9101226c4ce157bff823a4'
+    const _baseOffset: number = 210;
 
-        return await res.json();
+    const getAllCharacters = async (offset = _baseOffset) => {
+        const res = await request(`${_apiBase}characters?limit=9&offset=${offset}&${_apiKey}`)
+        return res.data.results.map(_transformCharacter)
     }
 
-    getAllCharacters = async (offset=this._baseOffset) => {
-        const res = await this.getResource('\n' +
-            `${this._apiBase}characters?limit=9&offset=${offset}&${this._apiKey}`)
-        return res.data.results.map(this._transformCharacter)
+    const getCharacter = async (id: number) => {
+        const res = await request(`${_apiBase}characters/${id}?${_apiKey}`)
+        return _transformCharacter(res.data.results[0]);
     }
 
-    getCharacter = async (id: number) => {
-        const res = await this.getResource('\n' +
-            `${this._apiBase}characters/${id}?${this._apiKey}`)
-        return this._transformCharacter(res.data.results[0]);
-    }
-
-    _transformCharacter = (char: any): IData => {
+    const _transformCharacter = (char: any): IData => {
         return {
             id: char.id,
             name: char.name,
@@ -38,6 +30,7 @@ export default class MarvelService {
 
         }
     }
+    return{loading,error,clearError,getAllCharacters,getCharacter}
 
 }
-
+export default useMarvelService;

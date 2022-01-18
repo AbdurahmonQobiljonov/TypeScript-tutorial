@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react/index";
-import {IData, IProps} from "../../interfaces/interfaces";
-import MarvelService from "../../services/MarvelService";
+import {IData} from "../../interfaces/interfaces";
+import useMarvelService from "../../services/MarvelService";
 import {charId} from "./CharinfoProps";
 import View from "./View";
 import ErrorMassage from "../errorMassage/ErrorMassage";
@@ -8,48 +8,30 @@ import Spinner from "../spinner/spinner";
 import Skeleton from '../skeleton/Skeleton'
 
 import './charInfo.scss';
-import {ErrorInfo, ReactElement} from "react";
 
-const CharInfo = (props: charId):JSX.Element => {
+const CharInfo = (props: charId): JSX.Element => {
     const [char, setChar] = useState<IData>();
-    const [loading, setLoading] = useState<boolean>(false);
-    const [error, setError] = useState<boolean>(false);
 
-    const marvelService = new MarvelService();
+    const {error, loading, getCharacter,clearError} = useMarvelService();
 
     useEffect(() => {
         updateChar()
     }, [props.charId])
 
-
     const updateChar = () => {
+        clearError();
         const {charId} = props;
         if (!charId) {
             return;
         }
 
-        onCharLoading();
-
-        marvelService
-            .getCharacter(charId)
+        getCharacter(charId)
             .then(onCharListLoaded)
-            .catch(onError);
-    }
-
-    const onCharLoading = (): void => {
-        setLoading(true)
     }
 
     const onCharListLoaded = (char: IData) => {
         setChar(char);
-        setLoading(false);
     }
-
-    const onError = () => {
-        setError(true)
-        setLoading(true)
-    }
-
 
     const skeleton = char?.name || loading || error ? null : <Skeleton/>
     const errorMessage = error ? <ErrorMassage/> : null;
