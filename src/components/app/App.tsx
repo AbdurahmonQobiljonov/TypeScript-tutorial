@@ -1,40 +1,27 @@
-import {useState} from "react/index";
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+
 import AppHeader from "../appHeader/AppHeader";
-import RandomChar from "../randomChar/RandomChar";
-import CharList from "../charList/CharList";
-import CharInfo from "../charInfo/CharInfo";
+import ErrorMassage from '../errorMassage/ErrorMassage'
+import ComicsPage from '../../pages/ComicsPage'
+import HomePage from '../../pages/HomePage'
 
-import decoration from '../../resources/img/vision.png';
-import ErrorBoundary from "../errorBoundary/ErrorBoundary";
 
-const  App = ():JSX.Element =>  {
+const App = (): JSX.Element => {
 
-    const [selectedChar,setChar]=useState<number>(0)
-
-    const onSelectedChar = (id: number) => {
-        setChar(id);
-    }
-
-        return (
+    return (
+        <Router>
             <div className="app">
                 <AppHeader/>
                 <main>
-                    <ErrorBoundary>
-                        <RandomChar/>
-                    </ErrorBoundary>
-                    <div className="char__content">
-                        <ErrorBoundary>
-                            <CharList onCharSelected={onSelectedChar}/>
-                        </ErrorBoundary>
-                        <ErrorBoundary>
-                            <CharInfo charId={selectedChar}/>
-                        </ErrorBoundary>
-                    </div>
-                    <img className="bg-decoration" src={decoration} alt="vision"/>
+                    <Routes>
+                        <Route path='/' element={<HomePage/>}/>
+                        <Route path='/comics' element={<ComicsPage/>}/>
+                        <Route path='*' element={<ErrorMassage/>}/>
+                    </Routes>
                 </main>
             </div>
-        )
-
+        </Router>
+    )
 }
 
 export default App;

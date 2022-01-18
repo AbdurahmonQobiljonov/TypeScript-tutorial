@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2f5dfac-170d-4f9f-a5d6-5c1779c49268" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/hooks/http.hook.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/ComicsPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/HomePage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/charInfo/CharInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/charInfo/CharInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/charList/CharList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/charList/CharList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/randomChar/RandomChar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/randomChar/RandomChar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/appHeader/AppHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/appHeader/AppHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/comicsList/ComicsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/comicsList/ComicsList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/interfaces.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/interfaces.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/MarvelService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/MarvelService.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +25,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -66,7 +71,8 @@
       <workItem from="1642235602331" duration="3647000" />
       <workItem from="1642251840824" duration="6853000" />
       <workItem from="1642354844888" duration="83000" />
-      <workItem from="1642483112577" duration="6052000" />
+      <workItem from="1642483112577" duration="6327000" />
+      <workItem from="1642496689524" duration="5641000" />
     </task>
     <servers />
   </component>
