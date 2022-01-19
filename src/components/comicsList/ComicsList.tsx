@@ -1,4 +1,6 @@
 import {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom'
+
 import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/spinner';
 import ErrorMessage from '../errorMassage/ErrorMassage';
@@ -19,13 +21,13 @@ const ComicsList = () => {
         onRequest(offset, true);
     }, [])
 
-    const onRequest = (offset:number, initial?:boolean) => {
+    const onRequest = (offset: number, initial?: boolean) => {
         initial ? setnewItemLoading(false) : setnewItemLoading(true);
         getAllComics(offset)
             .then(onComicsListLoaded)
     }
 
-    const onComicsListLoaded = (newComicsList:IComices[]) => {
+    const onComicsListLoaded = (newComicsList: IComices[]) => {
         let ended = false;
         if (newComicsList.length < 8) {
             ended = true;
@@ -36,15 +38,15 @@ const ComicsList = () => {
         setComicsEnded(ended);
     }
 
-    function renderItems (arr:IComices[]) {
+    function renderItems(arr: IComices[]) {
         const items = arr.map((item, i) => {
             return (
                 <li className="comics__item" key={i}>
-                    <a href="#">
+                    <Link to={`/comics/${item.id}`}>
                         <img src={item.thumbnail} alt={item.title} className="comics__item-img"/>
                         <div className="comics__item-name">{item.title}</div>
                         <div className="comics__item-price">{item.price}</div>
-                    </a>
+                    </Link>
                 </li>
             )
         })
@@ -68,7 +70,7 @@ const ComicsList = () => {
             {items}
             <button
                 disabled={newItemLoading}
-                style={{'display' : comicsEnded ? 'none' : 'block'}}
+                style={{'display': comicsEnded ? 'none' : 'block'}}
                 className="button button__main button__long"
                 onClick={() => onRequest(offset)}>
                 <div className="inner">load more</div>

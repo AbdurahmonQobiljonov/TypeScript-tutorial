@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2f5dfac-170d-4f9f-a5d6-5c1779c49268" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/appHeader/appHeader.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/appHeader/appHeader.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/404.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/SinglecomicPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/comicsList/ComicsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/comicsList/ComicsList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/singleComic/SingleComic.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/singleComic/singleComic.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/MarvelService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/MarvelService.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +70,9 @@
       <workItem from="1642251840824" duration="6853000" />
       <workItem from="1642354844888" duration="83000" />
       <workItem from="1642483112577" duration="6327000" />
-      <workItem from="1642496689524" duration="6352000" />
+      <workItem from="1642496689524" duration="6571000" />
+      <workItem from="1642520925057" duration="15000" />
+      <workItem from="1642588241266" duration="3844000" />
     </task>
     <servers />
   </component>
