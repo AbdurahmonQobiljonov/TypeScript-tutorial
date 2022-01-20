@@ -1,12 +1,12 @@
-import {useState} from "react/index";
+import {useState,lazy} from "react/index";
 
 import RandomChar from "../components/randomChar/RandomChar";
 import CharList from "../components/charList/CharList";
-import CharInfo from "../components/charInfo/CharInfo";
 import ErrorBoundary from "../components/errorBoundary/ErrorBoundary";
 
 import decoration from '../resources/img/vision.png';
 
+const CharInfo = lazy(()=> import("../components/charInfo/CharInfo"));
 
 const HomePage = () =>{
     const [selectedChar, setChar] = useState<number>(0)

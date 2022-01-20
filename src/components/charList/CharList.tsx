@@ -38,11 +38,7 @@ const CharList = (props: onCharSelect) => {
         setOffset(offset => offset + 9);
         setCharEnded(ended)
         setCharList(charList => ([...charList, ...newCharList]))
-    }
-
-    function onCharListLoading() {
-        setNewItemLoading(true)
-    }
+    };
 
     const itemRefs = useRef<(HTMLElement|null)[]>([]);
 
